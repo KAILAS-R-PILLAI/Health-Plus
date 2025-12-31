@@ -42,5 +42,5 @@ jobs:
     - name: Start React app with pm2
       run: |
         cd /var/www/my-react-app
-        pm2 restart react-app || pm2 start npx --name react-app -- serve -s .
+        pm2 restart react-app || pm2 start npx serve -s .
         pm2 save
