@@ -32,3 +32,7 @@ jobs:
         TARGET: ${{ secrets.SERVER_TARGET_PATH }}
         SOURCE: "build/"
         ARGS: "-rlgoDzvc -i --delete"
+
+    - name: Serve React app for testing
+      run: |
+        npx serve -s build -l 3000 &
