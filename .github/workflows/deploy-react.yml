@@ -33,10 +33,11 @@ jobs:
         SOURCE: "build/"
         ARGS: "-rlgoDzvc -i --delete"
 
-    - name: Deploy build folder
+    - name: Deploy build folder + server.js
       run: |
         rm -rf /var/www/my-react-app/*
         cp -r build/* /var/www/my-react-app/
+        cp server.js /var/www/my-react-app/
 
     - name: Start React app with pm2
       run: |
