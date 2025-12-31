@@ -41,6 +41,10 @@ jobs:
 
     - name: Start React app with pm2
       run: |
+        run: |
+        ssh -i ${{ secrets.SERVER_SSH_KEY }} ${{ secrets.SERVER_USER }}@${{ secrets.SERVER_HOST }} << 'EOF'
         cd /var/www/my-react-app
-        pm2 restart react-app || pm2 start npx serve -s .
+        pm2 delete react-app || true
+        pm2 start npx --name react-app -- serve -s build -l 3000
         pm2 save
+        EOF
